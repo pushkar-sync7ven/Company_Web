@@ -156,7 +156,7 @@ export default function Home() {
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
           <img
-            src="/WhatsApp_Image_2026-05-15_at_22.22.30_(1).png"
+            src="public/sync7ven-logo.png"
             alt="watermark"
             className="w-[80vw] max-w-[1800px] opacity-5 select-none"
           />
