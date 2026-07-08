@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import {
   Cpu,
@@ -21,8 +22,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-
-type Page = "home" | "services" | "about" | "work" | "contact";
 
 interface Service {
   icon: typeof Cpu;
@@ -225,10 +224,6 @@ const allTechnologies = [
   { name: "PostgreSQL", icon: "postgresql" },
 ];
 
-interface ServicesProps {
-  onNavigate: (page: Page) => void;
-}
-
 function TechIcon({
   icon,
   size = "md",
@@ -415,12 +410,11 @@ function ServiceCard({
 function ServiceModal({
   service,
   onClose,
-  onNavigate,
 }: {
   service: Service;
   onClose: () => void;
-  onNavigate: (page: Page) => void;
 }) {
+  const navigate = useNavigate();
   const Icon = service.icon;
 
   useEffect(() => {
@@ -438,8 +432,8 @@ function ServiceModal({
 
   const handleContact = useCallback(() => {
     onClose();
-    setTimeout(() => onNavigate("contact"), 300);
-  }, [onClose, onNavigate]);
+    setTimeout(() => navigate("/contact"), 300);
+  }, [onClose, navigate]);
 
   return createPortal(
     <div
@@ -624,7 +618,7 @@ function TechnologyShowcase() {
   );
 }
 
-export default function Services({ onNavigate }: ServicesProps) {
+export default function Services() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const header = useScrollAnimation(0.2);
   const ctaSection = useScrollAnimation(0.15);
@@ -726,7 +720,6 @@ export default function Services({ onNavigate }: ServicesProps) {
         <ServiceModal
           service={selectedService}
           onClose={() => setSelectedService(null)}
-          onNavigate={onNavigate}
         />
       )}
     </div>

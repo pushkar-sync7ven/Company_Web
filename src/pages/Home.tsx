@@ -1,21 +1,8 @@
 import { useEffect, useRef } from "react";
-import {
-  ArrowRight,
-  Sparkles,
-  Rocket,
-  Users,
-  Glasses,
-  Gamepad2,
-  Scale3D,
-} from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Sparkles, Rocket, Users, Glasses, Gamepad2, Scale3d as Scale3D } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { useCounter } from "../hooks/useCounter";
-
-type Page = "home" | "services" | "about" | "contact";
-
-interface HomeProps {
-  onNavigate: (page: Page) => void;
-}
 
 function StatItem({
   value,
@@ -80,7 +67,7 @@ const highlights = [
   },
 ];
 
-export default function Home({ onNavigate }: HomeProps) {
+export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const statsSection = useScrollAnimation(0.3);
   const highlightsSection = useScrollAnimation(0.15);
@@ -187,23 +174,6 @@ export default function Home({ onNavigate }: HomeProps) {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 max-w-5xl mx-auto w-full">
-          {/* Animated Logo - properly centered */}
-          {/* <div className="animate-scale-in" style={{ animationDelay: '0.1s' }}>
-            <div className="relative group cursor-pointer inline-block">
-              <div className="absolute -inset-6 sm:-inset-8 bg-gradient-to-r from-[#c9956a]/20 to-[#e8c9a0]/10 rounded-3xl blur-2xl animate-pulse-ring opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
-              <img
-                src="/WhatsApp_Image_2026-05-15_at_22.22.30_(1).png"
-                alt="sync7ven"
-                className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-2xl object-cover shadow-2xl  animate-float group-hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-          </div> */}
-
-          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#c9956a]/30 bg-[#c9956a]/5 text-[#c9956a] text-xs tracking-widest uppercase mb-8 animate-fade-in group hover:border-[#c9956a]/60 hover:bg-[#c9956a]/10 transition-all duration-300" style={{ animationDelay: '0.3s' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#c9956a] animate-pulse" />
-            IT Services & AI Solutions
-          </div> */}
-
           <h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[0.95] tracking-tight mb-6 animate-slide-up"
             style={{ animationDelay: "0.1s" }}
@@ -212,10 +182,7 @@ export default function Home({ onNavigate }: HomeProps) {
             <span className="bg-gradient-to-r from-[#c9956a] via-[#e8c9a0] to-[#c9956a] bg-clip-text text-transparent animate-gradient">
               Sync.
             </span>
-            {/* <br /> */}
-            {/* <span className="bg-gradient-to-r from-[#c9956a] via-[#e8c9a0] to-[#c9956a] bg-clip-text text-transparent animate-gradient"> */}
             Scale.
-            {/* </span> */}
           </h1>
 
           <p
@@ -224,17 +191,17 @@ export default function Home({ onNavigate }: HomeProps) {
           >
             From AI-powered platforms and modern web applications to immersive
             AR/VR experiences and interactive games, SYNC
-            <span className=" text-xs sm:text-2xl  mx-[2px]">7</span>
-            VEN creates future-ready digital solutions that help businesses
-            build smarter, move faster, and scale further.
+            <span className=" text-xs sm:text-2xl  mx-[2px]">7</span>VEN creates
+            future-ready digital solutions that help businesses build smarter,
+            move faster, and scale further.
           </p>
 
           <div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in-delay-2 w-full max-w-md sm:max-w-none px-4 sm:px-0"
             style={{ animationDelay: "1.1s" }}
           >
-            <button
-              onClick={() => onNavigate("services")}
+            <Link
+              to="/services"
               className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-gradient-to-r from-[#c9956a] to-[#b87d52] text-[#0d0d0d] font-bold text-xs sm:text-sm tracking-wider uppercase rounded-lg overflow-hidden transition-all duration-400 hover:shadow-xl hover:shadow-[#c9956a]/30 hover:gap-3 hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#e8c9a0] to-[#c9956a] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
@@ -245,19 +212,18 @@ export default function Home({ onNavigate }: HomeProps) {
                   className="transition-transform group-hover:translate-x-1"
                 />
               </span>
-            </button>
-            <button
-              onClick={() => onNavigate("contact")}
+            </Link>
+            <Link
+              to="/contact"
               className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-4 border border-white/15 text-white font-semibold text-xs sm:text-sm tracking-wider uppercase rounded-lg transition-all duration-400 hover:border-[#c9956a]/50 hover:shadow-lg hover:shadow-[#c9956a]/10 hover:scale-105"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#c9956a]/0 to-[#c9956a]/0 group-hover:from-[#c9956a]/5 group-hover:to-transparent rounded-lg transition-all duration-400" />
               <span className="relative">Get in Touch</span>
-            </button>
+            </Link>
           </div>
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce-slow">
-          {/* <span className="text-gray-600 text-xs tracking-widest uppercase">Scroll</span> */}
           <div className="w-px h-8 bg-gradient-to-b from-[#c9956a]/50 to-transparent" />
         </div>
       </section>
@@ -275,15 +241,15 @@ export default function Home({ onNavigate }: HomeProps) {
               </h2>
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-6 group-hover:text-gray-300 transition-colors duration-300">
                 SYNC
-                <span className=" text-xs sm:text-xl  mx-[2px]">7</span>
-                VEN is a technology and innovation studio focused on building
-                the future through AI, software, immersive experiences, and
-                digital creativity.
+                <span className=" text-xs sm:text-xl  mx-[2px]">7</span>VEN is a
+                technology and innovation studio focused on building the future
+                through AI, software, immersive experiences, and digital
+                creativity.
               </p>
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-8 group-hover:text-gray-300 transition-colors duration-300">
-                We partner with startups, growing businesses, and enterprises to
-                design and develop intelligent AI solutions, modern web & mobile
-                applications, interactive games, AR/VR experiences, and
+                We partner with startups, growing businesses, and enterprises
+                to design and develop intelligent AI solutions, modern web &
+                mobile applications, interactive games, AR/VR experiences, and
                 high-impact digital products
               </p>
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-8 group-hover:text-gray-300 transition-colors duration-300">
@@ -291,8 +257,8 @@ export default function Home({ onNavigate }: HomeProps) {
                 creativity, and engineering excellence to transform bold ideas
                 into powerful digital realities.
               </p>
-              <button
-                onClick={() => onNavigate("about")}
+              <Link
+                to="/about"
                 className="group inline-flex items-center gap-2 text-[#c9956a] text-sm font-semibold tracking-wider uppercase hover:gap-3 transition-all duration-300"
               >
                 Learn more about us
@@ -300,7 +266,7 @@ export default function Home({ onNavigate }: HomeProps) {
                   size={14}
                   className="transition-transform group-hover:translate-x-1"
                 />
-              </button>
+              </Link>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {[
@@ -520,8 +486,8 @@ export default function Home({ onNavigate }: HomeProps) {
             AI. Apps. Games. Immersive Experiences. One team to bring it all
             together.
           </p>
-          <button
-            onClick={() => onNavigate("contact")}
+          <Link
+            to="/contact"
             className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-gradient-to-r from-[#c9956a] to-[#b87d52] text-[#0d0d0d] font-bold text-xs sm:text-sm tracking-wider uppercase rounded-lg hover:shadow-xl hover:shadow-[#c9956a]/40 transition-all duration-400 hover:scale-105"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#e8c9a0] to-[#c9956a] opacity-0 group-hover:opacity-100 transition-opacity duration-400 rounded-lg" />
@@ -532,7 +498,7 @@ export default function Home({ onNavigate }: HomeProps) {
                 className="transition-transform group-hover:translate-x-1"
               />
             </span>
-          </button>
+          </Link>
         </div>
       </section>
     </div>

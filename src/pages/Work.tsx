@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import {
   ExternalLink,
   X,
@@ -33,12 +34,6 @@ interface Project {
   impact: string;
   results: string[];
   year: string;
-}
-
-type Page = "contact";
-
-interface WorkProps {
-  onNavigate: (page: Page) => void;
 }
 
 const projects: Project[] = [
@@ -596,7 +591,7 @@ function ProjectModal({
   );
 }
 
-export default function Work({ onNavigate }: WorkProps) {
+export default function Work() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
@@ -817,8 +812,8 @@ export default function Work({ onNavigate }: WorkProps) {
             Let's create something extraordinary together. Our team is ready to
             bring your vision to life.
           </p>
-          <button
-            onClick={() => onNavigate("contact")}
+          <Link
+            to="/contact"
             className="group/btn relative inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 sm:px-8 py-4 bg-gradient-to-r from-[#c9956a] to-[#b87d52] text-[#0d0d0d] font-bold text-xs sm:text-sm tracking-wider uppercase rounded-lg hover:shadow-xl hover:shadow-[#c9956a]/40 transition-all duration-400 hover:scale-105"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#e8c9a0] to-[#c9956a] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-400 rounded-lg" />
@@ -829,7 +824,7 @@ export default function Work({ onNavigate }: WorkProps) {
                 className="transition-transform group-hover/btn:translate-x-1"
               />
             </span>
-          </button>
+          </Link>
         </div>
       </section>
 

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   Target,
   Eye,
@@ -100,12 +101,6 @@ const differentiators = [
   "Full ownership transfer of all work. No vendor lock-in on any project",
 ];
 
-interface AboutProps {
-  onNavigate: (
-    page: "home" | "services" | "about" | "work" | "contact",
-  ) => void;
-}
-
 function TimelineItem({
   item,
   index,
@@ -147,7 +142,7 @@ function TimelineItem({
   );
 }
 
-export default function About({ onNavigate }: AboutProps) {
+export default function About() {
   const header = useScrollAnimation(0.15);
   const missionSection = useScrollAnimation(0.12);
   const valuesSection = useScrollAnimation(0.12);
@@ -560,8 +555,8 @@ export default function About({ onNavigate }: AboutProps) {
                 Explore our projects across artificial intelligence, web,
                 mobile, games, and automation.
               </p>
-              <button
-                onClick={() => onNavigate("work")}
+              <Link
+                to="/work"
                 className="group/btn relative inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 bg-gradient-to-r from-[#c9956a] to-[#b87d52] text-[#0d0d0d] font-bold text-xs sm:text-sm tracking-wider uppercase rounded-lg transition-all duration-400 hover:shadow-xl hover:shadow-[#c9956a]/40 hover:scale-105"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#e8c9a0] to-[#c9956a] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-400 rounded-lg" />
@@ -572,7 +567,7 @@ export default function About({ onNavigate }: AboutProps) {
                     className="transition-transform group-hover/btn:translate-x-1"
                   />
                 </span>
-              </button>
+              </Link>
             </div>
 
             {/* Contact CTA */}
@@ -590,8 +585,8 @@ export default function About({ onNavigate }: AboutProps) {
                 Tell us about your vision. We will respond within 24 hours with
                 a clear plan and next steps.
               </p>
-              <button
-                onClick={() => onNavigate("contact")}
+              <Link
+                to="/contact"
                 className="group/btn relative inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 border border-[#c9956a]/40 text-[#c9956a] font-bold text-xs sm:text-sm tracking-wider uppercase rounded-lg transition-all duration-400 hover:bg-gradient-to-r hover:from-[#c9956a] hover:to-[#b87d52] hover:text-[#0d0d0d] hover:shadow-xl hover:shadow-[#c9956a]/30 hover:border-transparent hover:scale-105"
               >
                 <span className="relative flex items-center gap-2">
@@ -601,7 +596,7 @@ export default function About({ onNavigate }: AboutProps) {
                     className="transition-transform group-hover/btn:translate-x-1"
                   />
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,29 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
-type Page =
-  | "home"
-  | "services"
-  | "about"
-  | "work"
-  | "contact"
-  | "privacy"
-  | "terms";
-
-interface NavbarProps {
-  currentPage: Page;
-  onNavigate: (page: Page) => void;
-}
-
-const links: Array<{ label: string; page: Page }> = [
-  { label: "Home", page: "home" },
-  { label: "About", page: "about" },
-  { label: "Services", page: "services" },
-  { label: "Work", page: "work" },
-  { label: "Contact", page: "contact" },
+const links = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Work", to: "/work" },
+  { label: "Contact", to: "/contact" },
 ];
 
-export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -39,9 +26,8 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (page: Page) => {
+  const handleMobileNav = () => {
     setOpen(false);
-    onNavigate(page);
   };
 
   return (
@@ -55,8 +41,8 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10">
         <div className="h-16 lg:h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <button
-            onClick={() => handleNav("home")}
+          <Link
+            to="/"
             className="flex items-center gap-2.5 group transition-all duration-300 hover:opacity-80 flex-shrink-0"
           >
             <img
@@ -71,41 +57,36 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
               </span>
               VEN
             </span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
-              <button
-                key={link.page}
-                onClick={() => handleNav(link.page)}
-                className={`relative pb-1 uppercase text-sm tracking-wider font-semibold transition ${
-                  currentPage === link.page
-                    ? "text-[#c9956a]"
-                    : "text-gray-400 hover:text-white"
-                }`}
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `relative pb-1 uppercase text-sm tracking-wider font-semibold transition ${
+                    isActive
+                      ? "text-[#c9956a]"
+                      : "text-gray-400 hover:text-white"
+                  }`
+                }
               >
                 {link.label}
-
-                <span
-                  className={`absolute left-0 -bottom-0.5 h-0.5 bg-[#c9956a] transition-all duration-300 ${
-                    currentPage === link.page
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                  }`}
-                />
-              </button>
+                <span className="absolute left-0 -bottom-0.5 h-0.5 bg-[#c9956a] transition-all duration-300 w-0 [[aria-current=page]>&]:w-full group-hover:w-full" />
+              </NavLink>
             ))}
           </div>
 
           {/* Right Side */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => handleNav("contact")}
+            <Link
+              to="/contact"
               className="hidden lg:flex px-5 py-2 border border-[#c9956a] text-[#c9956a] rounded font-semibold uppercase tracking-wider hover:bg-[#c9956a] hover:text-black transition"
             >
               Get Started
-            </button>
+            </Link>
 
             <button
               onClick={() => setOpen(!open)}
@@ -118,7 +99,6 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
       </div>
 
       {/* Mobile Menu */}
-
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
           open ? "max-h-96" : "max-h-0"
@@ -126,25 +106,29 @@ export default function Navbar({ currentPage, onNavigate }: NavbarProps) {
       >
         <div className="bg-[#111111] border-t border-[#c9956a]/10 px-5 py-5 flex flex-col gap-5">
           {links.map((link) => (
-            <button
-              key={link.page}
-              onClick={() => handleNav(link.page)}
-              className={`text-left uppercase tracking-wider transition ${
-                currentPage === link.page
-                  ? "text-[#c9956a]"
-                  : "text-gray-300 hover:text-[#c9956a]"
-              }`}
+            <NavLink
+              key={link.to}
+              to={link.to}
+              onClick={handleMobileNav}
+              className={({ isActive }) =>
+                `text-left uppercase tracking-wider transition ${
+                  isActive
+                    ? "text-[#c9956a]"
+                    : "text-gray-300 hover:text-[#c9956a]"
+                }`
+              }
             >
               {link.label}
-            </button>
+            </NavLink>
           ))}
 
-          <button
-            onClick={() => handleNav("contact")}
-            className="mt-2 w-full py-3 rounded border border-[#c9956a] text-[#c9956a] font-bold uppercase hover:bg-[#c9956a] hover:text-black transition"
+          <Link
+            to="/contact"
+            onClick={handleMobileNav}
+            className="mt-2 w-full py-3 rounded border border-[#c9956a] text-[#c9956a] font-bold uppercase text-center hover:bg-[#c9956a] hover:text-black transition"
           >
             Get Started
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import {
   Shield,
@@ -10,13 +11,7 @@ import {
   Mail,
 } from "lucide-react";
 
-interface PrivacyPolicyProps {
-  onNavigate: (
-    page: "home" | "services" | "about" | "work" | "contact",
-  ) => void;
-}
-
-export default function PrivacyPolicy({ onNavigate }: PrivacyPolicyProps) {
+export default function PrivacyPolicy() {
   const header = useScrollAnimation(0.15);
   const content = useScrollAnimation(0.1);
 
@@ -217,12 +212,12 @@ export default function PrivacyPolicy({ onNavigate }: PrivacyPolicyProps) {
                       <span className="text-[#c9956a]">+1 (555) 000-0000</span>
                     </p> */}
                   </div>
-                  <button
-                    onClick={() => onNavigate("contact")}
+                  <Link
+                    to="/contact"
                     className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#c9956a] to-[#b87d52] text-[#0d0d0d] font-bold text-xs sm:text-sm tracking-wider uppercase rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#c9956a]/30 hover:scale-105"
                   >
                     Contact Us
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

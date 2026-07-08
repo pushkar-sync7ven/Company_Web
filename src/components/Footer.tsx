@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Mail,
   Phone,
@@ -7,20 +8,7 @@ import {
   Instagram,
 } from "lucide-react";
 
-type Page =
-  | "home"
-  | "about"
-  | "services"
-  | "work"
-  | "contact"
-  | "privacy"
-  | "terms";
-
-interface FooterProps {
-  onNavigate: (page: Page) => void;
-}
-
-export default function Footer({ onNavigate }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="bg-[#080808] border-t border-white/5 pt-12 sm:pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +43,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                   icon: Instagram,
                   href: "https://www.instagram.com/sync7ven?igsh=NzFjbnN6bXB6bmo1",
                 },
-                // { icon: Github, href: '#' },
               ].map(({ icon: Icon, href }, i) => (
                 <a
                   key={i}
@@ -75,19 +62,19 @@ export default function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-2.5 sm:space-y-3">
               {[
-                { label: "Home", page: "home" as Page },
-                { label: "About", page: "about" as Page },
-                { label: "Services", page: "services" as Page },
-                { label: "Work", page: "work" as Page },
-                { label: "Contact", page: "contact" as Page },
+                { label: "Home", to: "/" },
+                { label: "About", to: "/about" },
+                { label: "Services", to: "/services" },
+                { label: "Work", to: "/work" },
+                { label: "Contact", to: "/contact" },
               ].map((item) => (
-                <li key={item.page}>
-                  <button
-                    onClick={() => onNavigate(item.page)}
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
                     className="text-gray-400 text-xs sm:text-sm hover:text-[#c9956a] transition-all duration-300 hover:translate-x-1"
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -123,21 +110,21 @@ export default function Footer({ onNavigate }: FooterProps) {
             </p>
 
             <div className="flex items-center gap-4 sm:gap-6">
-              <button
-                onClick={() => onNavigate("privacy")}
+              <Link
+                to="/privacy"
                 className="text-gray-500 text-xs tracking-wider hover:text-[#c9956a] transition-colors duration-300"
               >
                 Privacy Policy
-              </button>
+              </Link>
 
               <span className="text-gray-700">|</span>
 
-              <button
-                onClick={() => onNavigate("terms")}
+              <Link
+                to="/terms"
                 className="text-gray-500 text-xs tracking-wider hover:text-[#c9956a] transition-colors duration-300"
               >
                 Terms & Conditions
-              </button>
+              </Link>
             </div>
 
             <p className="text-gray-600 text-xs tracking-wider">
