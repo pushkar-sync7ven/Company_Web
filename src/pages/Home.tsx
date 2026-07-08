@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Rocket, Users, Glasses, Gamepad2, Scale3d as Scale3D } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { useCounter } from "../hooks/useCounter";
+import SEO from "../components/SEO";
 
 function StatItem({
   value,
@@ -150,9 +151,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="animate-page-enter">
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
+    <>
+      <SEO
+        title="SYNC7VEN | AI, Web, App & Digital Solutions"
+        description="SYNC7VEN builds AI solutions, websites, mobile apps, automation, AR/VR experiences, games, and scalable digital products for modern businesses."
+        canonicalPath="/"
+      />
+      <div className="animate-page-enter">
+        {/* Hero */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
           <img
@@ -502,5 +509,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   ExternalLink,
   X,
@@ -615,9 +616,15 @@ export default function Work() {
   //const hasMore = filtered.length > visibleCount;
 
   return (
-    <div className="animate-page-enter">
-      {/* Hero */}
-      <section className="relative py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-[#0d0d0d] overflow-hidden">
+    <>
+      <SEO
+        title="Our Work | SYNC7VEN"
+        description="Explore selected SYNC7VEN projects and digital products across web applications, technology solutions, interactive experiences, and software development."
+        canonicalPath="/work"
+      />
+      <div className="animate-page-enter">
+        {/* Hero */}
+        <section className="relative py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-[#0d0d0d] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial from-[#c9956a]/5 via-transparent to-transparent" />
         <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-[#c9956a]/5 animate-morph-blob blur-3xl opacity-30 pointer-events-none" />
         <div
@@ -835,6 +842,7 @@ export default function Work() {
           onClose={() => setSelectedProject(null)}
         />
       )}
-    </div>
+      </div>
+    </>
   );
 }
