@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import SEO from "../components/SEO";
 import {
   FileText,
   CheckCircle,
@@ -80,15 +79,9 @@ export default function TermsConditions() {
   ];
 
   return (
-    <>
-      <SEO
-        title="Terms & Conditions | SYNC7VEN"
-        description="Read the SYNC7VEN Terms & Conditions governing the use of our website and services."
-        canonicalPath="/terms"
-      />
-      <div className="animate-page-enter">
-        {/* Hero */}
-        <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
+    <div className="animate-page-enter">
+      {/* Hero */}
+      <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         <div className="absolute inset-0 bg-gradient-radial from-[#c9956a]/5 via-transparent to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d0d0d] to-transparent" />
 
@@ -239,7 +232,6 @@ export default function TermsConditions() {
           </div>
         </div>
       </section>
-      </div>
-    </>
+    </div>
   );
 }

@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import emailjs from "@emailjs/browser";
-import SEO from "../components/SEO";
 
 type FormState = {
   name: string;
@@ -148,14 +147,8 @@ export default function Contact() {
     }`;
 
   return (
-    <>
-      <SEO
-        title="Contact SYNC7VEN | Start a Project"
-        description="Contact SYNC7VEN to discuss AI, web, mobile, automation, AR/VR, game development, SEO, or custom digital product requirements."
-        canonicalPath="/contact"
-      />
-      <div className="animate-page-enter">
-        <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#0d0d0d] min-h-screen">
+    <div className="animate-page-enter">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#0d0d0d] min-h-screen">
         <div className="max-w-7xl mx-auto">
           <div
             ref={header.ref}
@@ -511,7 +504,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      </div>
-    </>
+    </div>
   );
 }

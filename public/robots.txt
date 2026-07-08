@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://sync7ven.com/sitemap.xml

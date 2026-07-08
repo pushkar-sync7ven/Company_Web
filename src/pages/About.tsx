@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import SEO from "../components/SEO";
 import {
   Target,
   Eye,
@@ -230,15 +229,9 @@ export default function About() {
   }, []);
 
   return (
-    <>
-      <SEO
-        title="About SYNC7VEN | Our Story, Mission & Vision"
-        description="Learn about SYNC7VEN, our story, mission, vision, values, and the shared purpose behind the technology and digital products we build."
-        canonicalPath="/about"
-      />
-      <div className="animate-page-enter">
-        {/* Hero Section */}
-        <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
+    <div className="animate-page-enter">
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
         <div className="absolute inset-0 bg-gradient-radial from-[#c9956a]/5 via-transparent to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0d0d0d] to-transparent" />
@@ -608,7 +601,6 @@ export default function About() {
           </div>
         </div>
       </section>
-      </div>
-    </>
+    </div>
   );
 }

@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
-import SEO from "../components/SEO";
 import {
   Cpu,
   BarChart3,
@@ -625,14 +624,8 @@ export default function Services() {
   const ctaSection = useScrollAnimation(0.15);
 
   return (
-    <>
-      <SEO
-        title="Services | SYNC7VEN"
-        description="Explore SYNC7VEN services across AI solutions, data analytics, web and mobile development, cloud, ERP, UI/UX, automation, AR/VR, game development, and SEO."
-        canonicalPath="/services"
-      />
-      <div className="animate-page-enter">
-        <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-[#090909] min-h-screen">
+    <div className="animate-page-enter">
+      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-[#090909] min-h-screen">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div
@@ -729,7 +722,6 @@ export default function Services() {
           onClose={() => setSelectedService(null)}
         />
       )}
-      </div>
-    </>
+    </div>
   );
 }
