@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import {
   Shield,
@@ -98,6 +99,13 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="animate-page-enter">
+      <SEO
+        title="Privacy Policy | SYNC7VEN"
+        description="Read the SYNC7VEN Privacy Policy to understand how information may be collected, used, and protected when you use our website and services."
+        canonicalPath="/privacy"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* Hero */}
       <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         <div className="absolute inset-0 bg-gradient-radial from-[#c9956a]/5 via-transparent to-transparent" />

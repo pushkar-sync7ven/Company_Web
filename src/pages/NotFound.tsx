@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Home, Search } from "lucide-react";
+import SEO from "../components/SEO";
 
 export default function NotFound() {
   return (
     <div className="animate-page-enter min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 bg-[#0d0d0d]">
+      <SEO
+        title="Page Not Found | SYNC7VEN"
+        description="The page you requested could not be found on the SYNC7VEN website."
+        robots="noindex, follow"
+      />
       <div className="text-center max-w-md mx-auto">
         <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#c9956a]/10 mb-6">
           <Search size={40} className="text-[#c9956a]" />

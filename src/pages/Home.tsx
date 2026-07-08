@@ -3,6 +3,29 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Rocket, Users, Glasses, Gamepad2, Scale3d as Scale3D } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { useCounter } from "../hooks/useCounter";
+import StructuredData from "../components/StructuredData";
+import SEO from "../components/SEO";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SYNC7VEN",
+  url: "https://sync7ven.com",
+  logo: "https://sync7ven.com/sync7ven-logo.png",
+  description:
+    "SYNC7VEN provides IT services, AI solutions, web and mobile app development, automation, game development, and technology consulting.",
+  sameAs: [
+    "https://www.linkedin.com/company/sync7ven/",
+    "https://www.instagram.com/sync7ven?igsh=NzFjbnN6bXB6bmo1",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "SYNC7VEN",
+  url: "https://sync7ven.com",
+};
 
 function StatItem({
   value,
@@ -151,14 +174,25 @@ export default function Home() {
 
   return (
     <div className="animate-page-enter">
+      <SEO
+        title="SYNC7VEN | AI, Web, App & Digital Solutions"
+        description="SYNC7VEN builds AI solutions, websites, mobile apps, automation, AR/VR experiences, games, and scalable digital products for modern businesses."
+        canonicalPath="/"
+        robots="index, follow"
+        ogType="website"
+      />
+      <StructuredData data={organizationSchema} />
+      <StructuredData data={websiteSchema} />
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
           <img
-            src="/WhatsApp_Image_2026-05-15_at_22.22.30_(1).png"
-            alt="watermark"
+            src="/sync7ven_Transparent_Logo.webp"
+            alt=""
             className="w-[80vw] max-w-[1800px] opacity-5 select-none"
+            loading="eager"
+            decoding="async"
           />
         </div>
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
@@ -330,7 +364,7 @@ export default function Home() {
             }`}
           >
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
-              Why sync7ven
+              Why SYNC7VEN
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Built different, by design
@@ -479,9 +513,9 @@ export default function Home() {
         className={`py-16 sm:py-24 px-4 sm:px-6 bg-[#0d0d0d] transition-all duration-1000 ${ctaSection.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
       >
         <div className="max-w-3xl mx-auto text-center p-8 sm:p-12 rounded-2xl border border-[#c9956a]/20 bg-gradient-to-br from-[#c9956a]/5 to-transparent hover:border-[#c9956a]/40 transition-all duration-300 group animate-border-glow">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-[#e8c9a0] transition-colors duration-300">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-[#e8c9a0] transition-colors duration-300">
             Let's Build Something Remarkable
-          </h3>
+          </h2>
           <p className="text-sm sm:text-base text-gray-400 mb-8 group-hover:text-gray-300 transition-colors duration-300">
             AI. Apps. Games. Immersive Experiences. One team to bring it all
             together.

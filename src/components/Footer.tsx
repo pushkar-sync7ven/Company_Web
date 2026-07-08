@@ -17,8 +17,9 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-4">
               <img
                 src="/sync7ven-logo.png"
-                alt="sync7ven"
+                alt="SYNC7VEN logo"
                 className="h-9 w-12 sm:h-10 sm:w-13 rounded-lg object-cover"
+                decoding="async"
               />
               <span className="text-base sm:text-lg font-black tracking-[0.08em] text-white">
                 SYNC
@@ -34,7 +35,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Twitter, href: "#" },
+                { icon: Twitter, href: "" },
                 {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/company/sync7ven/",
@@ -43,16 +44,26 @@ export default function Footer() {
                   icon: Instagram,
                   href: "https://www.instagram.com/sync7ven?igsh=NzFjbnN6bXB6bmo1",
                 },
-              ].map(({ icon: Icon, href }, i) => (
-                <a
-                  key={i}
-                  href={href}
-                  target="_blank"
-                  className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#c9956a] hover:border-[#c9956a]/50 hover:bg-[#c9956a]/5 transition-all duration-300 hover:scale-110"
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
+              ].map(({ icon: Icon, href }, i) =>
+                href ? (
+                  <a
+                    key={i}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#c9956a] hover:border-[#c9956a]/50 hover:bg-[#c9956a]/5 transition-all duration-300 hover:scale-110"
+                  >
+                    <Icon size={16} />
+                  </a>
+                ) : (
+                  <span
+                    key={i}
+                    className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-gray-400"
+                  >
+                    <Icon size={16} />
+                  </span>
+                )
+              )}
             </div>
           </div>
 

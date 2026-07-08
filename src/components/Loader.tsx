@@ -44,7 +44,7 @@ export default function Loader({ onFinish }: LoaderProps) {
         autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
         className="max-w-full max-h-full object-contain"
       >
         <source src="/Logo.mp4" type="video/mp4" />

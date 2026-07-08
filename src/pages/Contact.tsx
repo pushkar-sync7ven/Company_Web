@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "../components/SEO";
 import {
   Mail,
   Phone,
@@ -148,6 +149,13 @@ export default function Contact() {
 
   return (
     <div className="animate-page-enter">
+      <SEO
+        title="Contact SYNC7VEN | Start a Project"
+        description="Contact SYNC7VEN to discuss AI, web, mobile, automation, AR/VR, game development, SEO, or custom digital product requirements."
+        canonicalPath="/contact"
+        robots="index, follow"
+        ogType="website"
+      />
       <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#0d0d0d] min-h-screen">
         <div className="max-w-7xl mx-auto">
           <div
@@ -161,9 +169,9 @@ export default function Contact() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
               Get In Touch
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
               Let's Work Together
-            </h2>
+            </h1>
             <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-xl mx-auto leading-relaxed px-2">
               Have a project in mind? We'd love to hear about it. Reach out and
               let's discuss how we can help transform your business.
@@ -189,9 +197,9 @@ export default function Contact() {
                         className="sm:w-8 sm:h-8 text-green-400"
                       />
                     </div>
-                    <h3 className="text-white text-xl sm:text-2xl font-bold mb-3">
+                    <h2 className="text-white text-xl sm:text-2xl font-bold mb-3">
                       Message Sent!
-                    </h3>
+                    </h2>
                     <p className="text-sm sm:text-base text-gray-400 mb-8">
                       Thanks for reaching out. We'll get back to you within 24
                       hours.
@@ -205,9 +213,9 @@ export default function Contact() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} noValidate>
-                    <h3 className="text-white text-lg sm:text-xl font-bold mb-6 sm:mb-8">
+                    <h2 className="text-white text-lg sm:text-xl font-bold mb-6 sm:mb-8">
                       Send a Message
-                    </h3>
+                    </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-4 sm:mb-5">
                       <div
                         className="group animate-stagger"
@@ -338,9 +346,9 @@ export default function Contact() {
               }`}
             >
               <div className="p-6 sm:p-7 rounded-2xl border border-white/8 bg-[#111] hover:border-[#c9956a]/30 transition-all duration-400 hover:shadow-lg hover:shadow-[#c9956a]/10 group">
-                <h4 className="text-white font-bold mb-4 sm:mb-6 group-hover:text-[#e8c9a0] transition-colors text-base sm:text-lg">
+                <h3 className="text-white font-bold mb-4 sm:mb-6 group-hover:text-[#e8c9a0] transition-colors text-base sm:text-lg">
                   Contact Details
-                </h4>
+                </h3>
                 <ul className="space-y-5">
                   {[
                     {
@@ -359,36 +367,52 @@ export default function Contact() {
                       icon: MapPin,
                       label: "Location",
                       value: "Global — Remote First",
-                      href: "#",
+                      href: "",
                     },
-                  ].map(({ icon: Icon, label, value, href }, i) => (
-                    <li
-                      key={label}
-                      className="group/item animate-stagger"
-                      style={{ animationDelay: `${i * 80}ms` }}
-                    >
-                      <span className="text-gray-600 text-xs tracking-widest uppercase mb-1 block group-hover/item:text-[#c9956a] transition-colors">
-                        {label}
-                      </span>
-                      <a
-                        href={href}
-                        className="flex items-center gap-3 text-gray-300 hover:text-[#c9956a] transition-all duration-300 group-hover/item:translate-x-1 text-sm"
+                  ].map(({ icon: Icon, label, value, href }, i) =>
+                    href ? (
+                      <li
+                        key={label}
+                        className="group/item animate-stagger"
+                        style={{ animationDelay: `${i * 80}ms` }}
                       >
-                        <Icon size={16} className="text-[#c9956a] shrink-0" />
-                        {value}
-                      </a>
-                    </li>
-                  ))}
+                        <span className="text-gray-600 text-xs tracking-widest uppercase mb-1 block group-hover/item:text-[#c9956a] transition-colors">
+                          {label}
+                        </span>
+                        <a
+                          href={href}
+                          className="flex items-center gap-3 text-gray-300 hover:text-[#c9956a] transition-all duration-300 group-hover/item:translate-x-1 text-sm"
+                        >
+                          <Icon size={16} className="text-[#c9956a] shrink-0" />
+                          {value}
+                        </a>
+                      </li>
+                    ) : (
+                      <li
+                        key={label}
+                        className="group/item animate-stagger"
+                        style={{ animationDelay: `${i * 80}ms` }}
+                      >
+                        <span className="text-gray-600 text-xs tracking-widest uppercase mb-1 block group-hover/item:text-[#c9956a] transition-colors">
+                          {label}
+                        </span>
+                        <div className="flex items-center gap-3 text-gray-300 text-sm">
+                          <Icon size={16} className="text-[#c9956a] shrink-0" />
+                          {value}
+                        </div>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
 
               <div className="p-6 sm:p-7 rounded-2xl border border-white/8 bg-[#111] hover:border-[#c9956a]/30 transition-all duration-400 hover:shadow-lg hover:shadow-[#c9956a]/10 group">
-                <h4 className="text-white font-bold mb-6 sm:mb-11 group-hover:text-[#e8c9a0] transition-colors text-base sm:text-lg">
+                <h3 className="text-white font-bold mb-6 sm:mb-11 group-hover:text-[#e8c9a0] transition-colors text-base sm:text-lg">
                   Follow Us
-                </h4>
+                </h3>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {[
-                    { icon: Twitter, label: "Twitter", href: "#" },
+                    { icon: Twitter, label: "Twitter", href: "" },
                     {
                       icon: Linkedin,
                       label: "LinkedIn",
@@ -400,21 +424,32 @@ export default function Contact() {
                       href: "https://www.instagram.com/sync7ven?igsh=NzFjbnN6bXB6bmo1",
                     },
                     // { icon: Github, label: 'GitHub', href: '#' },
-                  ].map(({ icon: Icon, label, href }, i) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      className="flex items-center gap-2.5 p-3 rounded-lg border border-white/8 text-gray-400 hover:text-white transition-all duration-400 hover:border-[#c9956a]/50 hover:bg-gradient-to-br hover:from-[#c9956a]/10 hover:to-transparent hover:shadow-md hover:shadow-[#c9956a]/20 text-sm group/social hover:scale-110 animate-stagger"
-                      style={{ animationDelay: `${i * 60}ms` }}
-                    >
-                      <Icon
-                        size={16}
-                        className="transition-transform group-hover/social:rotate-12"
-                      />
-                      {label}
-                    </a>
-                  ))}
+                  ].map(({ icon: Icon, label, href }, i) =>
+                    href ? (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2.5 p-3 rounded-lg border border-white/8 text-gray-400 hover:text-white transition-all duration-400 hover:border-[#c9956a]/50 hover:bg-gradient-to-br hover:from-[#c9956a]/10 hover:to-transparent hover:shadow-md hover:shadow-[#c9956a]/20 text-sm group/social hover:scale-110 animate-stagger"
+                        style={{ animationDelay: `${i * 60}ms` }}
+                      >
+                        <Icon
+                          size={16}
+                          className="transition-transform group-hover/social:rotate-12"
+                        />
+                        {label}
+                      </a>
+                    ) : (
+                      <span
+                        key={label}
+                        className="flex items-center gap-2.5 p-3 rounded-lg border border-white/8 text-gray-400 text-sm"
+                      >
+                        <Icon size={16} />
+                        {label}
+                      </span>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -463,9 +498,9 @@ export default function Contact() {
               <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
                 FAQ
               </span>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                 Common questions
-              </h3>
+              </h2>
             </div>
             <div className="max-w-3xl mx-auto space-y-3">
               {faqs.map(({ q, a }, i) => (

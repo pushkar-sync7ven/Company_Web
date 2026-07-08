@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
+import SEO from "../components/SEO";
 import {
   Cpu,
   BarChart3,
@@ -314,9 +315,10 @@ function TechIcon({
     >
       <img
         src={fallback}
-        alt={icon}
+        alt={name}
         className={`${imgSizes[size]} object-contain transition-transform duration-300 group-hover:scale-110`}
         loading="lazy"
+        decoding="async"
         onError={(e) => {
           (e.target as HTMLImageElement).style.display = "none";
         }}
@@ -369,9 +371,9 @@ function ServiceCard({
             </div>
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-white text-base sm:text-lg font-bold group-hover:text-[#e8c9a0] transition-colors duration-300 leading-tight">
+            <h2 className="text-white text-base sm:text-lg font-bold group-hover:text-[#e8c9a0] transition-colors duration-300 leading-tight">
               {service.title}
-            </h3>
+            </h2>
             <span className="text-[#c9956a] text-[11px] tracking-widest uppercase font-bold mt-1 block group-hover:text-[#e8c9a0] transition-colors duration-300">
               {service.tagline}
             </span>
@@ -560,9 +562,9 @@ function TechnologyShowcase() {
         <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-3 block">
           Our Technology Ecosystem
         </span>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
           Technologies We Work On
-        </h3>
+        </h2>
         <p className="text-gray-400 text-sm mt-3 max-w-xl mx-auto px-4">
           Leveraging industry-leading technologies, frameworks, cloud platforms,
           and development tools to deliver scalable, secure, and innovative
@@ -625,6 +627,13 @@ export default function Services() {
 
   return (
     <div className="animate-page-enter">
+      <SEO
+        title="Services | SYNC7VEN"
+        description="Explore SYNC7VEN services across AI solutions, data analytics, web and mobile development, cloud, ERP, UI/UX, automation, AR/VR, game development, and SEO."
+        canonicalPath="/services"
+        robots="index, follow"
+        ogType="website"
+      />
       <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-[#090909] min-h-screen">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -639,9 +648,9 @@ export default function Services() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
               What We Offer
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
               Our Services
-            </h2>
+            </h1>
             <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed px-2">
               From strategy to execution — we cover the full digital stack so
               you can focus on what matters most. Every service is backed by
@@ -702,9 +711,9 @@ export default function Services() {
                     size={24}
                     className="text-[#c9956a] mb-3 group-hover:scale-110 transition-transform duration-300"
                   />
-                  <h4 className="text-white font-bold text-sm sm:text-base mb-1 group-hover:text-[#e8c9a0] transition-colors duration-300">
+                  <h3 className="text-white font-bold text-sm sm:text-base mb-1 group-hover:text-[#e8c9a0] transition-colors duration-300">
                     {label}
-                  </h4>
+                  </h3>
                   <p className="text-gray-400 text-xs sm:text-sm group-hover:text-gray-300 transition-colors duration-300">
                     {desc}
                   </p>

@@ -47,8 +47,9 @@ export default function Navbar() {
           >
             <img
               src="/sync7ven-logo.png"
-              alt="sync7ven"
+              alt="SYNC7VEN logo"
               className="h-9 w-12 sm:h-10 sm:w-13 rounded-lg object-cover transition-transform duration-300 group-hover:scale-110"
+              decoding="async"
             />
             <span className="text-base sm:text-lg font-black tracking-[0.08em] text-white">
               SYNC

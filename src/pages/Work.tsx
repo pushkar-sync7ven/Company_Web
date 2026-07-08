@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   ExternalLink,
   X,
@@ -56,7 +57,7 @@ const projects: Project[] = [
 
     category: "AI",
 
-    images: ["/utils/agenticAi-dashboard.png", "/utils/agenticAi-workflow.png"],
+    images: ["/utils/webp/agenticAi-dashboard.webp", "/utils/webp/agenticAi-workflow.webp"],
 
     client: "AI Innovation Showcase",
 
@@ -97,7 +98,7 @@ const projects: Project[] = [
 
     category: "AI",
 
-    images: ["/utils/headcount-1.jpeg", "/utils/headcount-2.jpeg"],
+    images: ["/utils/webp/headcount-1.webp", "/utils/webp/headcount-2.webp"],
 
     client: "Smart Monitoring Solution",
 
@@ -141,7 +142,7 @@ const projects: Project[] = [
 
     category: "Web",
 
-    images: ["/utils/giftify-1.png", "/utils/giftify-2.png"],
+    images: ["/utils/webp/giftify-1.webp", "/utils/webp/giftify-2.webp"],
 
     client: "Personal Project",
 
@@ -172,7 +173,7 @@ const projects: Project[] = [
 
     category: "Web",
 
-    images: ["/utils/mediconnect-1.png", "/utils/mediconnect-2.png"],
+    images: ["/utils/webp/mediconnect-1.webp", "/utils/webp/mediconnect-2.webp"],
 
     client: "Healthcare Solution",
 
@@ -216,7 +217,7 @@ const projects: Project[] = [
 
     category: "Analytics",
 
-    images: ["/utils/stock1.jpeg", "/utils/stock2.jpeg"],
+    images: ["/utils/webp/stock1.webp", "/utils/webp/stock2.webp"],
 
     client: "Analytics Solution",
 
@@ -260,7 +261,7 @@ const projects: Project[] = [
 
     category: "App",
 
-    images: ["/utils/kido1.png", "/utils/kido2.png"],
+    images: ["/utils/webp/kido1.webp", "/utils/webp/kido2.webp"],
 
     client: "Academic Project",
 
@@ -282,35 +283,6 @@ const projects: Project[] = [
 
     year: "2026",
   },
-
-  // {
-  //   title: 'EcoTrack IoT Platform',
-  //   desc: 'Smart building energy management system with predictive maintenance and carbon tracking.',
-  //   longDesc: 'An IoT platform connecting thousands of sensors across commercial buildings to optimize energy usage. Uses ML to predict equipment failures, automate HVAC scheduling, and generate sustainability reports for ESG compliance.',
-  //   tech: ['Python', 'React', 'MQTT', 'InfluxDB', 'Grafana', 'Kubernetes'],
-  //   category: 'Automation',
-  //   image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //   client: 'Commercial Real Estate Firm',
-  //   duration: '11 months',
-  //   team: '6 engineers',
-  //   impact: '35% energy reduction',
-  //   results: ['35% energy cost reduction', '2,400+ sensors deployed', 'Predictive accuracy 94%', 'LEED Platinum certified'],
-  //   year: '2026',
-  // },
-  // {
-  //   title: 'SocialBoost Analytics',
-  //   desc: 'All-in-one social media analytics and content optimization platform for creators.',
-  //   longDesc: 'A creator-focused platform that analyzes performance across all major social networks, suggests optimal posting times, generates AI-powered content ideas, and provides competitor benchmarking. Used by 10,000+ content creators.',
-  //   tech: ['Next.js', 'Python', 'PostgreSQL', 'Redis', 'OpenAI', 'Chart.js'],
-  //   category: 'Web',
-  //   image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800',
-  //   client: 'Creator Economy Startup',
-  //   duration: '6 months',
-  //   team: '4 engineers',
-  //   impact: '10,000+ active creators',
-  //   results: ['10,000+ active creators', 'Average 43% engagement boost', 'Cross-platform analytics', 'AI content suggestions'],
-  //   year: '2026',
-  // },
 ];
 
 const categories = [
@@ -330,13 +302,6 @@ const categoryIcons: Record<string, typeof Cpu> = {
   Game: Gamepad2,
   Automation: Zap,
 };
-
-// const stats = [
-//   { icon: Layers, label: 'Projects', value: '150+' },
-//   { icon: Clock, label: 'Years', value: '5+' },
-//   { icon: Users, label: 'Clients', value: '80+' },
-//   { icon: TrendingUp, label: 'Success Rate', value: '99%' },
-// ];
 
 const stats = [
   { icon: Layers, label: "Projects Built", value: "5+" },
@@ -382,6 +347,8 @@ function ProjectCard({
           src={project.images[currentImage]}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/50 to-transparent" />
         <div className="absolute inset-0 bg-[#c9956a]/0 group-hover:bg-[#c9956a]/10 transition-colors duration-500" />
@@ -410,9 +377,9 @@ function ProjectCard({
         </div>
 
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="text-white font-bold text-base sm:text-lg mb-1 group-hover:text-[#e8c9a0] transition-colors duration-300">
+          <h2 className="text-white font-bold text-base sm:text-lg mb-1 group-hover:text-[#e8c9a0] transition-colors duration-300">
             {project.title}
-          </h3>
+          </h2>
           <p className="text-gray-400 text-xs line-clamp-2 group-hover:text-gray-300 transition-colors">
             {project.desc}
           </p>
@@ -469,7 +436,7 @@ function ProjectModal({
 
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % project.images.length);
-    }, 3000); // change every 3 seconds
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [project.images]);
@@ -487,6 +454,8 @@ function ProjectModal({
             src={project.images[currentImage]}
             alt={project.title}
             className="w-full h-full object-cover object-top"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
           <button
@@ -595,8 +564,6 @@ export default function Work() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [visibleCount, setVisibleCount] = useState(6);
-  // const [selectedCategory, setSelectedCategory] = useState("All");
-  // const [showAllProjects, setShowAllProjects] = useState(false);
   const header = useScrollAnimation(0.2);
   const statsSection = useScrollAnimation(0.15);
   const projectsHeader = useScrollAnimation(0.2);
@@ -612,10 +579,15 @@ export default function Work() {
 
   const visibleProjects = filtered.slice(0, visibleCount);
 
-  //const hasMore = filtered.length > visibleCount;
-
   return (
     <div className="animate-page-enter">
+      <SEO
+        title="Our Work | SYNC7VEN"
+        description="Explore selected SYNC7VEN projects and digital products across web applications, technology solutions, interactive experiences, and software development."
+        canonicalPath="/work"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* Hero */}
       <section className="relative py-20 sm:py-28 md:py-36 px-4 sm:px-6 bg-[#0d0d0d] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-radial from-[#c9956a]/5 via-transparent to-transparent" />
@@ -637,12 +609,12 @@ export default function Work() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
               Portfolio
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 sm:mb-6">
               Our{" "}
               <span className="bg-gradient-to-r from-[#c9956a] via-[#e8c9a0] to-[#c9956a] bg-clip-text text-transparent animate-gradient">
                 Work
               </span>
-            </h2>
+            </h1>
             <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed px-2">
               A curated selection of projects that showcase our expertise,
               creativity, and commitment to delivering exceptional results for
@@ -694,9 +666,9 @@ export default function Work() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
               Featured Projects
             </span>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
               Case Studies
-            </h3>
+            </h2>
           </div>
 
           {/* Filter */}
@@ -741,29 +713,6 @@ export default function Work() {
             ))}
           </div>
 
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {visibleProjects.map((project, index) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                index={index}
-                onOpen={setSelectedProject}
-              />
-            ))}
-          </div> */}
-
-          {/* {projects.length > 4 && (
-            <div className="flex justify-center mt-12">
-              <button
-                onClick={() => setShowAllProjects(!showAllProjects)}
-                className="px-8 py-3 rounded-full border border-[#c9956a] text-[#c9956a]
-                hover:bg-[#c9956a] hover:text-black transition-all duration-300 font-medium"
-              >
-                {showAllProjects ? 'Show Less' : 'View More Projects'}
-              </button>
-            </div>
-          )} */}
-
           <div className="flex justify-center mt-12">
             {visibleCount < filtered.length ? (
               <button
@@ -783,7 +732,6 @@ export default function Work() {
                   onClick={() => {
                     setVisibleCount(6);
 
-                    // Optional: Scroll back to the projects section
                     document.getElementById("projects")?.scrollIntoView({
                       behavior: "smooth",
                       block: "start",
@@ -805,9 +753,9 @@ export default function Work() {
       {/* CTA */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#0d0d0d]">
         <div className="max-w-3xl mx-auto text-center p-8 sm:p-12 rounded-2xl border border-[#c9956a]/20 bg-gradient-to-br from-[#c9956a]/5 to-transparent hover:border-[#c9956a]/40 transition-all duration-300 group animate-border-glow">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-[#e8c9a0] transition-colors duration-300">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-[#e8c9a0] transition-colors duration-300">
             Have a project in mind?
-          </h3>
+          </h2>
           <p className="text-sm sm:text-base text-gray-400 mb-8 group-hover:text-gray-300 transition-colors duration-300">
             Let's create something extraordinary together. Our team is ready to
             bring your vision to life.

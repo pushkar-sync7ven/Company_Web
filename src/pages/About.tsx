@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import {
   Target,
   Eye,
@@ -131,9 +132,9 @@ function TimelineItem({
         <span className="text-[#c9956a] text-xs sm:text-sm font-bold tracking-wider mb-1 block group-hover:animate-text-glow transition-all">
           {item.year}
         </span>
-        <h4 className="text-white font-bold text-sm sm:text-base mb-1.5 group-hover:text-[#e8c9a0] transition-colors duration-300">
+        <h3 className="text-white font-bold text-sm sm:text-base mb-1.5 group-hover:text-[#e8c9a0] transition-colors duration-300">
           {item.title}
-        </h4>
+        </h3>
         <p className="text-gray-500 text-xs sm:text-sm leading-relaxed group-hover:text-gray-400 transition-colors max-w-md">
           {item.desc}
         </p>
@@ -230,6 +231,13 @@ export default function About() {
 
   return (
     <div className="animate-page-enter">
+      <SEO
+        title="About SYNC7VEN | Our Story, Mission & Vision"
+        description="Learn about SYNC7VEN, our story, mission, vision, values, and the shared purpose behind the technology and digital products we build."
+        canonicalPath="/about"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
@@ -254,12 +262,12 @@ export default function About() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-4 block">
               Our Story
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
               About{" "}
               <span className="bg-gradient-to-r from-[#c9956a] via-[#e8c9a0] to-[#c9956a] bg-clip-text text-transparent animate-gradient">
                 Us
               </span>
-            </h2>
+            </h1>
             <p className="text-lg sm:text-xl md:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed px-2 ">
               Seven founders. Different disciplines. One vision. At SYNC
               <span className=" text-xs sm:text-2xl mx-[2px]">7</span>VEN, we
@@ -286,9 +294,9 @@ export default function About() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-3 block">
               Our Foundation
             </span>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
               Purpose & Direction
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
               Three pillars that define every decision we make and every product
               we ship.
@@ -356,9 +364,9 @@ export default function About() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-3 block">
               What Drives Us
             </span>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
               Core Values
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
               The non-negotiables that shape our culture, our craft, and our
               client relationships.
@@ -380,9 +388,9 @@ export default function About() {
                     className="text-[#c9956a] group-hover:rotate-12 transition-transform duration-300"
                   />
                 </div>
-                <h4 className="text-white font-bold mb-2 text-sm sm:text-base group-hover:text-[#e8c9a0] transition-colors duration-300">
+                <h3 className="text-white font-bold mb-2 text-sm sm:text-base group-hover:text-[#e8c9a0] transition-colors duration-300">
                   {title}
-                </h4>
+                </h3>
                 <p className="text-gray-500 text-xs sm:text-sm leading-relaxed group-hover:text-gray-400 transition-colors">
                   {desc}
                 </p>
@@ -406,9 +414,9 @@ export default function About() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-3 block">
               Our Journey
             </span>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
               The Road So Far
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto">
               From seven founders with different backgrounds to a global digital
               team. Every milestone marks a commitment to excellence.
@@ -496,9 +504,9 @@ export default function About() {
             <span className="text-[#c9956a] text-xs tracking-[0.3em] uppercase font-semibold mb-3 block">
               How We Operate
             </span>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
               Principles That Guide Us
-            </h3>
+            </h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto px-2">
               These principles shape how we design, how we communicate, and how
               we deliver every project.
@@ -517,9 +525,9 @@ export default function About() {
                 <div className="w-10 h-10 rounded-xl bg-[#c9956a]/10 flex items-center justify-center mb-4 group-hover:bg-[#c9956a]/20 group-hover:scale-110 transition-all duration-300">
                   <Icon size={20} className="text-[#c9956a]" />
                 </div>
-                <h4 className="text-white font-bold text-sm sm:text-base mb-2 group-hover:text-[#e8c9a0] transition-colors duration-300">
+                <h3 className="text-white font-bold text-sm sm:text-base mb-2 group-hover:text-[#e8c9a0] transition-colors duration-300">
                   {title}
-                </h4>
+                </h3>
                 <p className="text-gray-500 text-xs sm:text-sm leading-relaxed group-hover:text-gray-400 transition-colors">
                   {desc}
                 </p>
