@@ -3,29 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Rocket, Users, Glasses, Gamepad2, Scale3d as Scale3D } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { useCounter } from "../hooks/useCounter";
-import StructuredData from "../components/StructuredData";
 import SEO from "../components/SEO";
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "SYNC7VEN",
-  url: "https://sync7ven.com",
-  logo: "https://sync7ven.com/sync7ven-logo.png",
-  description:
-    "SYNC7VEN provides IT services, AI solutions, web and mobile app development, automation, game development, and technology consulting.",
-  sameAs: [
-    "https://www.linkedin.com/company/sync7ven/",
-    "https://www.instagram.com/sync7ven?igsh=NzFjbnN6bXB6bmo1",
-  ],
-};
-
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "SYNC7VEN",
-  url: "https://sync7ven.com",
-};
 
 function StatItem({
   value,
@@ -181,8 +159,6 @@ export default function Home() {
         robots="index, follow"
         ogType="website"
       />
-      <StructuredData data={organizationSchema} />
-      <StructuredData data={websiteSchema} />
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
         {/* Watermark */}
