@@ -45,6 +45,7 @@ export default function Loader({ onFinish }: LoaderProps) {
         muted
         playsInline
         preload="metadata"
+        aria-label="SYNC7VEN logo animation"
         className="max-w-full max-h-full object-contain"
       >
         <source src="/Logo.mp4" type="video/mp4" />

@@ -166,9 +166,12 @@ export default function Home() {
           <img
             src="/sync7ven_Transparent_Logo.webp"
             alt=""
+            width={1254}
+            height={1254}
             className="w-[80vw] max-w-[1800px] opacity-5 select-none"
             loading="eager"
             decoding="async"
+            fetchPriority="high"
           />
         </div>
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />

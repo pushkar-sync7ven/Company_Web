@@ -46,8 +46,10 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group transition-all duration-300 hover:opacity-80 flex-shrink-0"
           >
             <img
-              src="/sync7ven-logo.png"
+              src="/sync7ven-logo.webp"
               alt="SYNC7VEN logo"
+              width={1254}
+              height={533}
               className="h-9 w-12 sm:h-10 sm:w-13 rounded-lg object-cover transition-transform duration-300 group-hover:scale-110"
               decoding="async"
             />
@@ -91,9 +93,11 @@ export default function Navbar() {
 
             <button
               onClick={() => setOpen(!open)}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
               className="md:hidden text-white hover:text-[#c9956a] p-2"
             >
-              {open ? <X size={22} /> : <Menu size={22} />}
+              {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
             </button>
           </div>
         </div>

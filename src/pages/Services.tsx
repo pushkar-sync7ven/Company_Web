@@ -274,7 +274,7 @@ function TechIcon({
     postgresql:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
     //pinecone: "public/pinecone-removebg-preview (1).png",
-    sap: "/sap_Logo.png",
+    sap: "/sap_Logo.webp",
     api: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg",
     figma:
       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
@@ -316,6 +316,8 @@ function TechIcon({
       <img
         src={fallback}
         alt={name}
+        width={403}
+        height={248}
         className={`${imgSizes[size]} object-contain transition-transform duration-300 group-hover:scale-110`}
         loading="lazy"
         decoding="async"
@@ -371,9 +373,9 @@ function ServiceCard({
             </div>
           </div>
           <div className="flex-1 min-w-0">
-            <h2 className="text-white text-base sm:text-lg font-bold group-hover:text-[#e8c9a0] transition-colors duration-300 leading-tight">
+            <h3 className="text-white text-base sm:text-lg font-bold group-hover:text-[#e8c9a0] transition-colors duration-300 leading-tight">
               {service.title}
-            </h2>
+            </h3>
             <span className="text-[#c9956a] text-[11px] tracking-widest uppercase font-bold mt-1 block group-hover:text-[#e8c9a0] transition-colors duration-300">
               {service.tagline}
             </span>
@@ -467,9 +469,9 @@ function ServiceModal({
               </div>
             </div>
             <div>
-              <h2 className="text-lg sm:text-xl font-bold text-white leading-tight">
+              <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
                 {service.title}
-              </h2>
+              </h3>
             </div>
           </div>
 

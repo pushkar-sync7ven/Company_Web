@@ -460,9 +460,10 @@ function ProjectModal({
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
           <button
             onClick={onClose}
+            aria-label="Close project details"
             className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 backdrop-blur flex items-center justify-center text-white hover:bg-[#c9956a]/30 transition-all duration-300 hover:scale-110"
           >
-            <X size={18} />
+            <X size={18} aria-hidden="true" />
           </button>
           <div className="absolute bottom-4 left-4 sm:left-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9956a]/20 border border-[#c9956a]/30 text-[#c9956a] text-xs font-semibold tracking-wider mb-2">

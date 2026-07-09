@@ -16,8 +16,10 @@ export default function Footer() {
           <div className="sm:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">
               <img
-                src="/sync7ven-logo.png"
+                src="/sync7ven-logo.webp"
                 alt="SYNC7VEN logo"
+                width={1254}
+                height={533}
                 className="h-9 w-12 sm:h-10 sm:w-13 rounded-lg object-cover"
                 decoding="async"
               />
@@ -35,32 +37,36 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Twitter, href: "" },
+                { icon: Twitter, href: "", label: "Twitter" },
                 {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/company/sync7ven/",
+                  label: "LinkedIn",
                 },
                 {
                   icon: Instagram,
                   href: "https://www.instagram.com/sync7ven?igsh=NzFjbnN6bXB6bmo1",
+                  label: "Instagram",
                 },
-              ].map(({ icon: Icon, href }, i) =>
+              ].map(({ icon: Icon, href, label }, i) =>
                 href ? (
                   <a
                     key={i}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={label}
                     className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#c9956a] hover:border-[#c9956a]/50 hover:bg-[#c9956a]/5 transition-all duration-300 hover:scale-110"
                   >
-                    <Icon size={16} />
+                    <Icon size={16} aria-hidden="true" />
                   </a>
                 ) : (
                   <span
                     key={i}
+                    aria-disabled="true"
                     className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-gray-400"
                   >
-                    <Icon size={16} />
+                    <Icon size={16} aria-hidden="true" />
                   </span>
                 )
               )}
@@ -114,7 +120,7 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-            <p className="text-gray-600 text-xs tracking-wider">
+            <p className="text-gray-400 text-xs tracking-wider">
               &copy; {new Date().getFullYear()} SYNC
               <span className=" text-xs sm:text-xl mx-[1px]">7</span>VEN. All
               rights reserved.
@@ -123,7 +129,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 sm:gap-6">
               <Link
                 to="/privacy"
-                className="text-gray-500 text-xs tracking-wider hover:text-[#c9956a] transition-colors duration-300"
+                className="text-gray-400 text-xs tracking-wider hover:text-[#c9956a] transition-colors duration-300"
               >
                 Privacy Policy
               </Link>
@@ -132,13 +138,13 @@ export default function Footer() {
 
               <Link
                 to="/terms"
-                className="text-gray-500 text-xs tracking-wider hover:text-[#c9956a] transition-colors duration-300"
+                className="text-gray-400 text-xs tracking-wider hover:text-[#c9956a] transition-colors duration-300"
               >
                 Terms & Conditions
               </Link>
             </div>
 
-            <p className="text-gray-600 text-xs tracking-wider">
+            <p className="text-gray-400 text-xs tracking-wider">
               BUILD &bull; SYNC &bull; SCALE
             </p>
           </div>
