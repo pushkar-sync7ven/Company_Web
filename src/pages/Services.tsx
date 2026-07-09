@@ -338,20 +338,22 @@ function ServiceCard({
   index: number;
   onOpen: () => void;
 }) {
-  const { ref, visible } = useScrollAnimation(0.1);
+  const { ref, visible } = useScrollAnimation<HTMLButtonElement>(0.1);
   const Icon = service.icon;
 
   return (
-    <div
+    <button
+      type="button"
       ref={ref}
       onClick={onOpen}
-      className={`group relative rounded-2xl border border-white/[0.06] bg-[#111] hover:border-[#c9956a]/40 transition-all duration-500 overflow-hidden cursor-pointer h-full ${
+      className={`group relative rounded-2xl border border-white/[0.06] bg-[#111] hover:border-[#c9956a]/40 transition-all duration-500 overflow-hidden cursor-pointer h-full text-left ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       } hover:shadow-[0_12px_48px_-12px_rgba(201,149,106,0.2)] hover:-translate-y-1.5`}
       style={{
         animationDelay: `${(index % 3) * 100}ms`,
         transitionDelay: `${(index % 3) * 50}ms`,
       }}
+      aria-label={`Learn more about ${service.title}`}
     >
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#c9956a]/0 group-hover:via-[#c9956a]/60 to-transparent transition-all duration-500" />
@@ -373,9 +375,9 @@ function ServiceCard({
             </div>
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-white text-base sm:text-lg font-bold group-hover:text-[#e8c9a0] transition-colors duration-300 leading-tight">
+            <h2 className="text-white text-base sm:text-lg font-bold group-hover:text-[#e8c9a0] transition-colors duration-300 leading-tight">
               {service.title}
-            </h3>
+            </h2>
             <span className="text-[#c9956a] text-[11px] tracking-widest uppercase font-bold mt-1 block group-hover:text-[#e8c9a0] transition-colors duration-300">
               {service.tagline}
             </span>
@@ -407,7 +409,7 @@ function ServiceCard({
           ))}
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -454,7 +456,7 @@ function ServiceModal({
           className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/[0.04] flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300 hover:scale-110 z-10 border border-white/[0.06]"
           aria-label="Close modal"
         >
-          <X size={16} />
+          <X size={16} aria-hidden="true" />
         </button>
 
         {/* Header */}

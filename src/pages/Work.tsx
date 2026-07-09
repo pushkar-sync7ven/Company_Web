@@ -319,7 +319,7 @@ function ProjectCard({
   index: number;
   onClick: () => void;
 }) {
-  const { ref, visible } = useScrollAnimation(0.1);
+  const { ref, visible } = useScrollAnimation<HTMLButtonElement>(0.1);
 
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -332,15 +332,17 @@ function ProjectCard({
   }, [project.images]);
 
   return (
-    <div
+    <button
+      type="button"
       ref={ref}
       onClick={onClick}
-      className={`group relative rounded-2xl overflow-hidden border border-white/8 bg-[#111] hover:border-[#c9956a]/50 transition-all duration-600 cursor-pointer ${
+      className={`group relative rounded-2xl overflow-hidden border border-white/8 bg-[#111] hover:border-[#c9956a]/50 transition-all duration-600 cursor-pointer text-left ${
         visible
           ? "opacity-100 translate-y-0 animate-stagger"
           : "opacity-0 translate-y-10"
       } hover:shadow-2xl hover:shadow-[#c9956a]/20 hover:scale-[1.02]`}
       style={{ animationDelay: `${(index % 3) * 100}ms` }}
+      aria-label={`View details for ${project.title}`}
     >
       <div className="relative overflow-hidden h-52 sm:h-56">
         <img
@@ -409,7 +411,7 @@ function ProjectCard({
           )}
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 

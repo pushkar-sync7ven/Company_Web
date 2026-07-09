@@ -4,30 +4,50 @@ interface LoaderProps {
   onFinish: () => void;
 }
 
+const LOADER_SHOWN_KEY = "sync7ven-loader-shown";
+const MAX_LOADER_DURATION_MS = 5000;
+const VIDEO_END_TIME = 4.43;
+const FADE_OUT_DURATION_MS = 500;
+
 export default function Loader({ onFinish }: LoaderProps) {
   const [hide, setHide] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hasStartedFadeOut = useRef(false);
 
   useEffect(() => {
     const video = videoRef.current;
 
     if (!video) return;
 
+    const triggerFadeOut = () => {
+      if (hasStartedFadeOut.current) return;
+      hasStartedFadeOut.current = true;
+
+      video.pause();
+      setHide(true);
+
+      setTimeout(() => {
+        sessionStorage.setItem(LOADER_SHOWN_KEY, "true");
+        onFinish();
+      }, FADE_OUT_DURATION_MS);
+    };
+
     const handleTimeUpdate = () => {
-      if (video.currentTime >= 4.43) {
-        video.pause();
-
-        setHide(true);
-
-        setTimeout(() => {
-          onFinish();
-        }, 500);
+      if (video.currentTime >= VIDEO_END_TIME) {
+        triggerFadeOut();
       }
     };
+
+    const handleFallbackTimeout = () => {
+      triggerFadeOut();
+    };
+
+    const timeoutId = window.setTimeout(handleFallbackTimeout, MAX_LOADER_DURATION_MS);
 
     video.addEventListener("timeupdate", handleTimeUpdate);
 
     return () => {
+      window.clearTimeout(timeoutId);
       video.removeEventListener("timeupdate", handleTimeUpdate);
     };
   }, [onFinish]);
